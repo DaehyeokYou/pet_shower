@@ -26,8 +26,8 @@ public class MypageViewHandler {
                 // view 객체에 이벤트의 Value 를 set 함
                 .setOrderId(.getId());
                 .setName(.getName());
-                .setGuest(.getGuest());
                 .setStatus(.getStatus());
+                .setDogType(.getRoomType());
                 // view 레파지 토리에 save
                 Repository.save();
             }

@@ -25,10 +25,10 @@ public class Order {
         //Following code causes dependency to external APIs
         // it is NOT A GOOD PRACTICE. instead, Event-Policy mapping is recommended.
 
-        .external.PaymentHistory paymentHistory = new .external.PaymentHistory();
+        .external.Payment payment = new .external.Payment();
         // mappings goes here
-        Application.applicationContext.getBean(.external.PaymentHistoryService.class)
-            .pay(paymentHistory);
+        Application.applicationContext.getBean(.external.PaymentService.class)
+            .pay(payment);
 
 
     }
