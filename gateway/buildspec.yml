@@ -6,7 +6,7 @@ env:
     _DIR_NAME: "gateway"
     _EKS: "ydh-eks"
     _NAMESPACE: "petshower"
-    IMAGE_TAG: "v2"
+    IMAGE_TAG: $CODEBUILD_RESOLVED_SOURCE_VERSION
 
 phases:
   install:
