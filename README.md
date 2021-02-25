@@ -56,7 +56,7 @@ Winter School 2팀 유대혁's Workspace입니다.
 ## Event Storming
 
 #### Diagram
-![team2hotel](https://user-images.githubusercontent.com/76020494/108933308-429dbf00-768e-11eb-95fd-cc66f136fca8.png)
+![image](https://user-images.githubusercontent.com/17021291/109109257-4f96dd00-7778-11eb-8bda-45d6d9633e02.png)
 
 ### 기능 요구사항을 커버하는지 검증
 1. 고객이 원하는 애견 종류를 선택하여 예약한다.(O)
