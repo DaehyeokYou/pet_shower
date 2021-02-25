@@ -15,11 +15,11 @@ public class Ordered extends AbstractEvent {
     public void setId(Long id) {
         this.id = id;
     }
-    public String getRoomType() {
+    public String getDogType() {
         return dogType;
     }
 
-    public void setRoomType(String dogType) {
+    public void setDogType(String dogType) {
         this.dogType = dogType;
     }
     public Long getCardNo() {

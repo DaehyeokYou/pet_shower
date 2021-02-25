@@ -22,14 +22,14 @@ public class MypageViewHandler {
         try {
             if (ordered.isMe()) {
                 // view 객체 생성
-                  = new ();
+            	Mypage mypage= new Mypage();
                 // view 객체에 이벤트의 Value 를 set 함
-                .setOrderId(.getId());
-                .setName(.getName());
-                .setStatus(.getStatus());
-                .setDogType(.getRoomType());
+            	mypage.setOrderId(ordered.getId());
+            	mypage.setName(ordered.getName());
+            	mypage.setStatus(ordered.getStatus());
+            	mypage.setDogType(ordered.getDogType());
                 // view 레파지 토리에 save
-                Repository.save();
+                mypageRepository.save(mypage);
             }
         }catch (Exception e){
             e.printStackTrace();
@@ -42,11 +42,12 @@ public class MypageViewHandler {
         try {
             if (paymentApproved.isMe()) {
                 // view 객체 조회
-                List<> List = Repository.findByOrderId(.getOrderId());
-                for(  : List){
+                List<Mypage> mypageList = mypageRepository.findByOrderId(paymentApproved.getOrderId());
+                for(Mypage mypage: mypageList){
                     // view 객체에 이벤트의 eventDirectValue 를 set 함
-                    // view 레파지 토리에 save
-                    Repository.save();
+                    mypage.setStatus(paymentApproved.getStatus());
+                	// view 레파지 토리에 save
+                    mypageRepository.save(mypage);
                 }
             }
         }catch (Exception e){
@@ -58,11 +59,13 @@ public class MypageViewHandler {
         try {
             if (reserveAccepted.isMe()) {
                 // view 객체 조회
-                List<> List = Repository.findByOrderId(.getOrderId());
-                for(  : List){
+            	List<Mypage> mypageList = mypageRepository.findByOrderId(reserveAccepted.getOrderId());
+            	for(Mypage mypage  : mypageList){
                     // view 객체에 이벤트의 eventDirectValue 를 set 함
                     // view 레파지 토리에 save
-                    Repository.save();
+            		mypage.setReservationId(reserveAccepted.getId());
+                	mypage.setStatus(reserveAccepted.getStatus());
+                	mypageRepository.save(mypage);
                 }
             }
         }catch (Exception e){
@@ -74,11 +77,12 @@ public class MypageViewHandler {
         try {
             if (orderCanceled.isMe()) {
                 // view 객체 조회
-                List<> List = Repository.findByOrderId(.getId());
-                for(  : List){
+            	List<Mypage> mypageList = mypageRepository.findByOrderId(orderCanceled.getId());
+                for(Mypage mypage  : mypageList){
                     // view 객체에 이벤트의 eventDirectValue 를 set 함
                     // view 레파지 토리에 save
-                    Repository.save();
+                	mypage.setStatus(orderCanceled.getStatus());
+                	mypageRepository.save(mypage);
                 }
             }
         }catch (Exception e){
@@ -90,11 +94,12 @@ public class MypageViewHandler {
         try {
             if (reserveCanceled.isMe()) {
                 // view 객체 조회
-                List<> List = Repository.findByOrderId(.getOrderId());
-                for(  : List){
+            	List<Mypage> mypageList = mypageRepository.findByOrderId(reserveCanceled.getOrderId());
+                for(Mypage mypage  : mypageList){
                     // view 객체에 이벤트의 eventDirectValue 를 set 함
                     // view 레파지 토리에 save
-                    Repository.save();
+                	mypage.setStatus(reserveCanceled.getStatus());
+                	mypageRepository.save(mypage);
                 }
             }
         }catch (Exception e){
@@ -106,11 +111,12 @@ public class MypageViewHandler {
         try {
             if (paymentCanceled.isMe()) {
                 // view 객체 조회
-                List<> List = Repository.findByOrderId(.getOrderId());
-                for(  : List){
+            	List<Mypage> mypageList = mypageRepository.findByOrderId(paymentCanceled.getOrderId());
+                for(Mypage mypage  : mypageList){
                     // view 객체에 이벤트의 eventDirectValue 를 set 함
                     // view 레파지 토리에 save
-                    Repository.save();
+                	mypage.setStatus(paymentCanceled.getStatus());
+                	mypageRepository.save(mypage);
                 }
             }
         }catch (Exception e){

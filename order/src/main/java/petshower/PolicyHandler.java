@@ -20,6 +20,7 @@ public class PolicyHandler{
 
         if(reserveAccepted.isMe()){
             System.out.println("##### listener  : " + reserveAccepted.toJson());
+            
         }
     }
     @StreamListener(KafkaProcessor.INPUT)

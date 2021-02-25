@@ -33,8 +33,8 @@ spring:
 
 logging:
   level:
-    org.hibernate.type: trace
-    org.springframework.cloud: debug
+    org.hibernate.type: warn
+    org.springframework.cloud: warn
 server:
   port: 8083
 ---

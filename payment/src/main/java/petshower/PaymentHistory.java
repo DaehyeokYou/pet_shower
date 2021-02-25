@@ -17,16 +17,18 @@ public class PaymentHistory {
 
     @PostPersist
     public void onPostPersist(){
+    	System.out.println("Payment - onPostPersist");
         PaymentApproved paymentApproved = new PaymentApproved();
         BeanUtils.copyProperties(this, paymentApproved);
         paymentApproved.publishAfterCommit();
-
-
-        PaymentCanceled paymentCanceled = new PaymentCanceled();
+    }
+    
+    @PostUpdate
+    public void onPostUpdate() {
+    	System.out.println("Payment - onPostUpdate");
+    	PaymentCanceled paymentCanceled = new PaymentCanceled();
         BeanUtils.copyProperties(this, paymentCanceled);
         paymentCanceled.publishAfterCommit();
-
-
     }
 
 

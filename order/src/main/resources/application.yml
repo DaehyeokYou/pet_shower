@@ -37,6 +37,10 @@ logging:
     org.springframework.cloud: debug
 server:
   port: 8081
+  
+api:
+  payment:
+    url: http://localhost:8083
 ---
 
 spring:
@@ -62,3 +66,6 @@ spring:
         event-out:
           destination: petshower
           contentType: application/json
+api:
+  payment:
+    url: http://payment:8080

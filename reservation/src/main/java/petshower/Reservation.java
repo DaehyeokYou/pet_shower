@@ -19,13 +19,13 @@ public class Reservation {
         ReserveAccepted reserveAccepted = new ReserveAccepted();
         BeanUtils.copyProperties(this, reserveAccepted);
         reserveAccepted.publishAfterCommit();
-
-
-        ReserveCanceled reserveCanceled = new ReserveCanceled();
+    }
+    
+    @PostUpdate
+    public void onPostUpdate() {
+    	ReserveCanceled reserveCanceled = new ReserveCanceled();
         BeanUtils.copyProperties(this, reserveCanceled);
         reserveCanceled.publishAfterCommit();
-
-
     }
 
 

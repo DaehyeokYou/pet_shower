@@ -10,6 +10,9 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class PolicyHandler{
+	@Autowired
+	PaymentRepository paymentRepository;
+	
     @StreamListener(KafkaProcessor.INPUT)
     public void onStringEventListener(@Payload String eventString){
 
@@ -20,6 +23,9 @@ public class PolicyHandler{
 
         if(orderCanceled.isMe()){
             System.out.println("##### listener  : " + orderCanceled.toJson());
+            Payment payment = paymentRepository.findByOrderId(orderCanceled.getId());
+            payment.setStatus("Order Cancel !!");
+            paymentRepository.save(payment);
         }
     }
 

@@ -24,12 +24,16 @@ public class Order {
 
         //Following code causes dependency to external APIs
         // it is NOT A GOOD PRACTICE. instead, Event-Policy mapping is recommended.
-
-        .external.Payment payment = new .external.Payment();
+        
+        //수정 S
+        petshower.external.Payment payment = new petshower.external.Payment();
+        System.out.println("this.id() : " + this.id);
+        payment.setOrderId(this.id);
+        payment.setStatus("Payment OK !!");
         // mappings goes here
-        Application.applicationContext.getBean(.external.PaymentService.class)
+        OrderApplication.applicationContext.getBean(petshower.external.PaymentService.class)
             .pay(payment);
-
+        //수정 E
 
     }
 
@@ -38,8 +42,6 @@ public class Order {
         OrderCanceled orderCanceled = new OrderCanceled();
         BeanUtils.copyProperties(this, orderCanceled);
         orderCanceled.publishAfterCommit();
-
-
     }
 
 

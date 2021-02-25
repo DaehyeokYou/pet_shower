@@ -7,10 +7,7 @@ import java.util.List;
 
 public interface MypageRepository extends CrudRepository<Mypage, Long> {
 
-    List<> findByOrderId(Long orderId);
-    List<> findByOrderId(Long orderId);
-    List<> findByOrderId(Long orderId);
-    List<> findByOrderId(Long orderId);
-    List<> findByOrderId(Long orderId);
+	//수정 
+    List<Mypage> findByOrderId(Long orderId);
 
 }
