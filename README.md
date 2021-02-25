@@ -739,7 +739,7 @@ https://stackoverflow.com/questions/56011492/accessdeniedexception-creating-eks-
 </details>
 
 - CI/CD 적용 및 빌드 성공 결과  
-<img width="700" src=https://user-images.githubusercontent.com/17754849/108810818-5219fb00-75ef-11eb-9fe4-9ae4e2a4e8d7.png>
+![image](https://user-images.githubusercontent.com/17021291/109104330-21f96600-776f-11eb-9d59-cda9adeba62f.png)
 - Buildspec.yml
 
 ```
@@ -747,10 +747,10 @@ version: 0.2
 
 env: 
   variables:
-    _PROJECT_NAME: "teamtwohotel2-order"
-    _DIR_NAME: "order"
-    _EKS: "teamtwohotel2"
-    _NAMESPACE: "teamtwohotel"
+    _PROJECT_NAME: "petshower-gateway"
+    _DIR_NAME: "gateway"
+    _EKS: "ydh-eks"
+    _NAMESPACE: "petshower"
 
 phases:
   install:
@@ -942,8 +942,8 @@ defaulting to time-based testing: 60 seconds
 #### 사전 작업
 1. metric server 설치 - kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/download/v0.3.7/components.yaml
 2. Resource Request/Limit 설정
-![image](https://user-images.githubusercontent.com/17021291/108804593-09f3dc00-75e1-11eb-9505-6d2140b61d00.png)
-3. HPA 설정 - kubectl autoscale deployment payment --cpu-percent=50 --min=1 --max=10 cpu-percent=50 -n teamtwohotel  
+![image](https://user-images.githubusercontent.com/17021291/109107820-c7173d00-7775-11eb-8e9c-d7f968be27d8.png)
+3. HPA 설정 - kubectl autoscale deployment payment --cpu-percent=50 --min=1 --max=10 -n teamtwohotel  
 
 Pod 들의 요청 대비 평균 CPU 사용율 (여기서는 요청이 200 milli-cores이므로, 모든 Pod의 평균 CPU 사용율이 100 milli-cores(50%)를 넘게되면 HPA 발생)"
 
@@ -953,21 +953,19 @@ Pod 들의 요청 대비 평균 CPU 사용율 (여기서는 요청이 200 milli-
 ![image](https://user-images.githubusercontent.com/17021291/108792500-c1c6c080-75c4-11eb-8d9b-718f7c030de3.png)
 
 #### 부하에 따른 오토스케일 아웃 모니터링
-![image](https://user-images.githubusercontent.com/17021291/108803415-f4c97e00-75dd-11eb-9fa0-7c01135c551d.png)
+![image](https://user-images.githubusercontent.com/17021291/109107908-e8782900-7775-11eb-8b27-937241a7d147.png)
 
 ## 무정지 배포
 #### 무정지 배포 전 replica 3 scale up
-![image](https://user-images.githubusercontent.com/17021291/108797620-f0e22f80-75ce-11eb-81db-de7a27574d03.png)
+![image](https://user-images.githubusercontent.com/17021291/109108098-38ef8680-7776-11eb-8835-295a669edf8d.png)
 
 #### Readiness 설정
-![image](https://user-images.githubusercontent.com/17021291/108806467-18dc8d80-75e5-11eb-822a-3c187cb7ffcc.png)
+![image](https://user-images.githubusercontent.com/17021291/109108175-57ee1880-7776-11eb-862d-aafaeff584d6.png)
 
-#### Rolling Update
-kubectl set image deploy order order=새로운 이미지 버전
-![image](https://user-images.githubusercontent.com/17021291/108797739-461e4100-75cf-11eb-96fc-959f48dc17c0.png)
+#### Rolling Update &&  siege로 무중단 확인
+![image](https://user-images.githubusercontent.com/17021291/109108744-6e48a400-7777-11eb-8911-c4fc034c1165.png)
+![image](https://user-images.githubusercontent.com/17021291/109108679-583ae380-7777-11eb-8956-b297f726d6d0.png)
 
-#### siege로 무중단 확인
-![image](https://user-images.githubusercontent.com/17021291/108806577-6f49cc00-75e5-11eb-99c8-8904c9995186.png)
 
 
 ## Configmap
