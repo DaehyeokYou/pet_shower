@@ -2,7 +2,7 @@ version: 0.2
 
 env: 
   variables:
-    _PROJECT_NAME: "petshower-order"
+    _PROJECT_NAME: "petshower-payment"
     _DIR_NAME: "payment"
     _EKS: "ydh-eks"
     _NAMESPACE: "petshower"
